@@ -1,0 +1,22 @@
+import vikingos.*
+
+describe "Test de Vikingos"{
+	var asterix = new Soldado(castaSocial = esclavo, armas = 10)
+	var ragnar = new Granjero(castaSocial = medio, armas = 0)
+	var atacarEuropa = new Expedicion(lugares = [], vikingos = [])
+	var paris = new Capital(defensores = 100, factorRiqueza = 50)
+	var aldea = new Aldea(botin = 300, cantCrucifijos = 100) 
+	test "agregar un vikingo a expedicion"{
+		assert.throwsExceptionWithMessage("No puede subir a la expedicion",{asterix.puedeIrAExpedicion(atacarEuropa)})
+	}
+	test "la expedicion vale la pena"{
+		atacarEuropa.agregarLugar(aldea)
+		atacarEuropa.agregarLugar(paris)
+		atacarEuropa.agregarVikingo(asterix)
+		assert.that(atacarEuropa.valenLaPena())
+	}
+	test "ragnar asciende a noble"{
+		ragnar.ascender()
+		assert.equals(noble,ragnar.castaSocial())
+	}
+}
